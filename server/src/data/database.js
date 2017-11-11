@@ -4,19 +4,13 @@ const mongoose = require('mongoose');
 require('../models/clinic');
 
 // definindo a variavel de conneccao com o mongoose
+mongoose.Promise = require('bluebird');
 
 const dbURI = 'mongodb://bluehack.keuller.com/bluehack'
-
-if(process.env.NODE_ENV === 'production'){
-    dbURI = 'mongodb:/addressProduction:PORT'
-} 
-
-mongoose.Promise = require('bluebird');
 
 const db = mongoose.createConnection(dbURI);
 
 // rastreamento de eventos de connecao com o mongoose
-
 db.on('connect', () => {
     console.log('mongoose connect to ' + dbURI);
 });

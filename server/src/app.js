@@ -11,7 +11,8 @@ const app = new koa()
 
 app.use(bodyParser())
 app.use(cors())
-const db = require('./setup/databaseMongoDB');
+
+const db = require('./data/database');
 
 // handle general errors
 app.on('error', (err) => console.error('[ERROR]', err))

@@ -1,7 +1,7 @@
 'user strict';
 const mongoose = require('mongoose')
 
-const db = require('../setup/databaseMongoDB')
+const db = require('../data/database')
 
 const clinicSchema = new mongoose.Schema({
     name: {
