@@ -1,11 +1,11 @@
 'use strict'
 
 const Router = require('koa-router')
-    , vehicles = require('./vehicles')
+    , clinic = require('./clinic')
 
 const router = new Router()
 
-vehicles(router)
+clinic(router)
 
 router.get('/', (ctx) => {
     ctx.body = 'Server is ready!'
