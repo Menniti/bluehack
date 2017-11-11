@@ -1,0 +1,4 @@
+.DS_Store
+front/node_modules/*
+server/node_modules/*
+yarn.lock
