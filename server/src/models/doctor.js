@@ -16,14 +16,9 @@ const doctorSchema = new mongoose.Schema({
         required: true,
         type: String
     },
-    speciality: {
-        required: true,
-        type: String
-    },
-    phone: {
-        required: true,
-        type: String
-    }
+    speciality: { type: String, required: true },
+    phone: { type: String, required: true },
+    hash: { type: String, required: true }
 })
 
 module.exports = db.model('Doctor', doctorSchema)

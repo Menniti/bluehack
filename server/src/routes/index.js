@@ -1,6 +1,7 @@
 'use strict'
 
 const Router = require('koa-router')
+    , uuid = require('uuid/v4')
     , clinic = require('./clinic')
     , doctor = require('./doctor')
     , patient = require('./patient')
@@ -13,6 +14,10 @@ patient(router)
 
 router.get('/', (ctx) => {
     ctx.body = 'Server is ready!'
+})
+
+router.get('/hashgen', (ctx) => {
+    ctx.body = { code: uuid() } 
 })
 
 router.get('/health', (ctx) => {

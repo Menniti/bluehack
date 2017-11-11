@@ -15,7 +15,8 @@ const patientSchema = new mongoose.Schema({
     },
     birthday: { type: String, required: true },
     mobile: { type: String, required: true },
-    gender: { type: String, required: false }
+    gender: { type: String, required: false },
+    hash: { type: String, required: true }
 })
 
 module.exports = db.model('Patient', patientSchema)
