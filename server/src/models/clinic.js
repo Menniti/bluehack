@@ -14,5 +14,4 @@ const clinicSchema = new mongoose.Schema({
     }
 })
 
-module.exports = db.model('Clinic', clinicSchema);
-
+module.exports = db.model('Clinic', clinicSchema)

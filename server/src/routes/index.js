@@ -2,10 +2,14 @@
 
 const Router = require('koa-router')
     , clinic = require('./clinic')
+    , doctor = require('./doctor')
+    , patient = require('./patient')
 
 const router = new Router()
 
 clinic(router)
+doctor(router)
+patient(router)
 
 router.get('/', (ctx) => {
     ctx.body = 'Server is ready!'

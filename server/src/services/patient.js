@@ -1,12 +1,12 @@
 'use strict' 
 
-const Clinic = require('../models/clinic')
+const Patient = require('../models/patient')
 
 module.exports = (function() {
     
     return {
         getAll() {
-            return Clinic.find({})
+            return Patient.find({})
         }
     }
 
