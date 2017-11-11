@@ -7,7 +7,6 @@
 const request = require('request')
     , Rx = require('rxjs')
     , database = require('./database')
-    , baseUrl = 'https://swapi.co/api'
 
 const { Observable } = Rx
 
