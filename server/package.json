@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.js",
-    "build": "docker build . -t nefro-server",
-    "server:start": "docker run --rm --name nefro-server -p 5000:5000 nefro-server",
-    "server:stop": "docker stop nefro-server",
+    "build": "docker build . -t 324664484357.dkr.ecr.us-west-2.amazonaws.com/bluehack-server:latest",
+    "publish": "docker push 324664484357.dkr.ecr.us-west-2.amazonaws.com/bluehack-server:latest",
+    "server:start": "docker run --rm --name bluehack-server -p 5000:5000 324664484357.dkr.ecr.us-west-2.amazonaws.com/bluehack-server:latest",
+    "server:stop": "docker stop bluehack-server",
     "test:routes": "tape tests/server/routes/*.js | faucet",
     "test:services": "tape tests/server/services/*_test.js | faucet"
   },
