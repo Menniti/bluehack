@@ -4,6 +4,7 @@ import Login from 'components/login'
 import Doctor from 'components/doctor'
 import Patient from 'components/patient'
 import Messages from 'components/message'
+import MessageForm from 'components/message/MessageForm'
 
 Vue.use(VueRouter)
 
@@ -22,9 +23,14 @@ const routes = [
     component: Patient,
     props: true
   }, {
-    path: '/messages',
+    path: '/messages/:id',
     name: 'messages',
-    component: Messages
+    component: Messages,
+    props: true
+  }, {
+    path: '/message/new',
+    name: 'message_new',
+    component: MessageForm
   }
 ]
 

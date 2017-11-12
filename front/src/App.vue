@@ -39,6 +39,10 @@
 
 .router-link-active { color: #2c3e50; }
 
+@media (max-width: 420px) {
+    .app-content { padding: 0px !important; }
+}
+
 h1, h2 { font-weight: normal; }
 
 ul { list-style-type: none; padding: 0; }
