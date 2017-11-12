@@ -11,6 +11,7 @@
     "publish": "npm run build && npm run package && docker push 324664484357.dkr.ecr.us-west-2.amazonaws.com/bluehack-front:latest"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "bulma": "^0.6.1",
     "vue": "^2.5.1",
     "vue-router": "^3.0.1",

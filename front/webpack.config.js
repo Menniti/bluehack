@@ -9,7 +9,7 @@ let extractCSS = new ExtractTextPlugin("css/app.css")
 module.exports = {
   entry: {
     bundle: './src/index.js',
-    vendor: ['vue', 'vue-router', 'vuelm']
+    vendor: ['vue', 'vue-router', 'vuelm', 'axios']
   },
   
   output: {

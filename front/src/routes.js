@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from 'components/login'
-import EssentialLinks from 'components/EssentialLinks'
+import Doctor from 'components/doctor'
+import Patient from 'components/patient'
+import Messages from 'components/message'
 
 Vue.use(VueRouter)
 
@@ -11,9 +13,17 @@ const routes = [
     name: 'home',
     component: Login
   }, {
-    path: '/essential',
-    name: 'essential',
-    component: EssentialLinks
+    path: '/doctors',
+    name: 'doctors',
+    component: Doctor
+  }, {
+    path: '/patients',
+    name: 'patients',
+    component: Patient
+  }, {
+    path: '/messages',
+    name: 'messages',
+    component: Messages
   }
 ]
 
