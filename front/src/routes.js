@@ -17,9 +17,10 @@ const routes = [
     name: 'doctors',
     component: Doctor
   }, {
-    path: '/patients',
+    path: '/patients/:id',
     name: 'patients',
-    component: Patient
+    component: Patient,
+    props: true
   }, {
     path: '/messages',
     name: 'messages',
