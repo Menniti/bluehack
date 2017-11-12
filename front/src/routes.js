@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import EssentialLinks from 'components/EssentialLinks'
-import Ecosystem from 'components/Ecosystem'
+import Login from 'components/login'
+import Doctor from 'components/doctor'
+import Patient from 'components/patient'
+import Messages from 'components/message'
 
 Vue.use(VueRouter)
 
@@ -9,15 +11,19 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    redirect: 'essential'
+    component: Login
   }, {
-    path: '/essential',
-    name: 'essential',
-    component: EssentialLinks
-  }, { 
-    path: '/ecosystem',
-    name: 'ecosystem',
-    component: Ecosystem
+    path: '/doctors',
+    name: 'doctors',
+    component: Doctor
+  }, {
+    path: '/patients',
+    name: 'patients',
+    component: Patient
+  }, {
+    path: '/messages',
+    name: 'messages',
+    component: Messages
   }
 ]
 

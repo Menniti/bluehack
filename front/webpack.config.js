@@ -4,11 +4,12 @@ let path = require('path')
   , ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 let extractCSS = new ExtractTextPlugin("css/app.css")
+  , extractSCSS = new ExtractTextPlugin("css/theme.css")
 
 module.exports = {
   entry: {
     bundle: './src/index.js',
-    vendor: ['vue', 'vue-router', 'vuelm']
+    vendor: ['vue', 'vue-router', 'vuelm', 'axios']
   },
   
   output: {
@@ -39,7 +40,10 @@ module.exports = {
       }, {
         test: /\.css$/,
         use: extractCSS.extract([ 'css-loader' ])
-      },{
+      }, {
+        test: /\.sass$/,
+        use: extractSCSS.extract([ 'css-loader', 'sass-loader' ])
+      }, {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
@@ -72,6 +76,7 @@ module.exports = {
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
     new CleanWebpackPlugin(['dist']),
+    extractSCSS,
     extractCSS,
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',

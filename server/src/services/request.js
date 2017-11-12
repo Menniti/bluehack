@@ -7,6 +7,8 @@ const uuid = require('uuid/v4')
     , Patient = require('../models/patient')
     , { Observable } = require('rxjs')
 
+const MAX_REQUESTS = 3
+
 module.exports = (function() {
 
     const convertType = (value) => {
@@ -28,6 +30,23 @@ module.exports = (function() {
         return result
     }
 
+    const transformData = (arr, config) => {
+        if (arr.length < 1) return Promise.reject('Request not found for this Code.')
+        
+        let request$, doctor$, patient$, data$ = null
+        let result = []
+
+        arr.forEach(item => {
+            request$ = Observable.of(item)
+            doctor$ = (config.doctor ? Observable.fromPromise(Doctor.find({ _id: item.doctor }).then(record => record[0])) : Observable.of({}))
+            patient$ = (config.patient ? Observable.fromPromise(Patient.find({ _id: item.patient }).then(record => record[0])) : Observable.of({}))
+            
+            result.push(Observable.zip(doctor$, patient$, request$).map(convert))
+        })
+
+        return Observable.from(result).mergeMap(obs => obs).map(value => value).toPromise()
+    }
+
     return {
         getAll() {
             return Request.find({})
@@ -35,15 +54,17 @@ module.exports = (function() {
 
         findById(id) {
             return Request.find({ _id: id }).then(model => {
-                if (model.length < 1) return Promise.reject('Request not found.')
-
-                let request$ = Observable.of(model[0])
-                let doctor$ = Observable.fromPromise(Doctor.find({ _id: model[0].doctor }).then(record => record[0]) )
-                let patient$ = Observable.fromPromise(Patient.find({ _id: model[0].patient }).then(record => record[0]) )
-                
-                let data$ = Observable.zip(doctor$, patient$, request$).map(convert)
-                return data$.toPromise()
+                return transformData(model, { doctor: true, patient: true })
             })
+        },
+
+        findByPatient(code) {
+            return Request.find({ patient: code })
+                .sort({ created_at: -1 })
+                .limit(MAX_REQUESTS)
+                .then(model => {
+                    return transformData(model, { doctor: true, patient: false })
+                })
         },
 
         save(data) {
@@ -63,7 +84,7 @@ module.exports = (function() {
                 content: data.content,
                 created_at: Date.now()
             })
-            
+
             return model.save()
         }
     }
