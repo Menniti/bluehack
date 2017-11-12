@@ -44,7 +44,7 @@ module.exports = (function() {
             result.push(Observable.zip(doctor$, patient$, request$).map(convert))
         })
 
-        return Observable.from(result).mergeMap(obs => obs).map(value => value).toPromise()
+        return Observable.from(result).mergeMap(obs => obs).map(value => value).bufferCount(5).toPromise()
     }
 
     return {

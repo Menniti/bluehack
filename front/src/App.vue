@@ -1,8 +1,11 @@
 <template>
   <div id="app">
         <app-header></app-header>
-        <br/>
-        <router-view></router-view>
+        <div class="columns app-content">
+            <div class="column is-12">
+                <router-view></router-view>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -21,15 +24,18 @@
     }
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
+
+[v-cloak] {display: none}
+
+.app-content { padding: 10px !important; }
 
 .router-link-active { color: #2c3e50; }
 
