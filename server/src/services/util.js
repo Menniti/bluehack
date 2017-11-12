@@ -1,5 +1,9 @@
 'use strict'
 
+const mongoose = require('mongoose')
+
+const Schema = mongoose.Schema;
+
 module.exports = (function() {
     return {
         genId() {
@@ -10,6 +14,10 @@ module.exports = (function() {
         json(response, code, msg) {
             response.status(code)
             response.json(msg)
+        },
+
+        newObjectId(value) {
+            return mongoose.Types.ObjectId(value)
         }
     }
 })()
