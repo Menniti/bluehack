@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import 'sass/bluehack.sass'
 import App from './App'
 import router from './routes'
 

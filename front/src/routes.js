@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Login from 'components/login'
 import EssentialLinks from 'components/EssentialLinks'
-import Ecosystem from 'components/Ecosystem'
 
 Vue.use(VueRouter)
 
@@ -9,15 +9,11 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    redirect: 'essential'
+    component: Login
   }, {
     path: '/essential',
     name: 'essential',
     component: EssentialLinks
-  }, { 
-    path: '/ecosystem',
-    name: 'ecosystem',
-    component: Ecosystem
   }
 ]
 
